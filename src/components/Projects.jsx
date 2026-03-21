@@ -8,16 +8,24 @@ const Projects = () => {
       date: "Feb 2025 - Mar 2025",
       description: "Performed EDA on clinical and genetic mutation features to study glioma grade patterns. Built machine learning models to classify benign LGG and malignant GBM brain tumors to reduce clinical screening costs through data-driven pre-diagnosis.",
       technologies: ["Python", "Pandas", "NumPy", "Scikit-learn", "Matplotlib", "Logistic Regression", "KNN"],
-      github: "https://github.com/Sangam919",
-      demo: "#"
+      github: "https://github.com/Sangam919/Gliomo-Grading-Brain-Tumor-LGG-GBM-Analysis",
+      demo: "https://github.com/Sangam919/Gliomo-Grading-Brain-Tumor-LGG-GBM-Analysis"
+    },
+    {
+      title: "Azure Transaction Analytics Platform",
+      date: "Oct 2024 - Dec 2024",
+      description: "Designed a multi-layered data architecture for processing financial transactions. Implemented Bronze to Gold Delta Lake patterns, utilizing Azure Data Factory for orchestration and Databricks for distributed processing.",
+      technologies: ["Azure Data Factory", "Databricks", "ADLS Gen2", "PySpark", "SQL", "Delta Lake"],
+      github: "https://github.com/Sangam919/Azure-Transaction-Analytics-Platform",
+      demo: "https://tinyurl.com/ycyv7xd8"
     },
     {
       title: "AI Voice Assistant Intelligent UI",
       date: "Aug 2024 - Oct 2024",
       description: "Developed an intelligent assistant capable of interacting through voice and text with real-time AI-powered responses. Implemented speech-to-text and neural text-to-speech pipelines. Integrated OpenAI APIs and DALL-E.",
       technologies: ["Python", "SpeechRecognition", "NLP", "OpenAI API", "DALL-E", "Neural TTS"],
-      github: "https://github.com/Sangam919",
-      demo: "#"
+      github: "https://github.com/Sangam919/AI-Voice-Assistant",
+      demo: "https://github.com/Sangam919/AI-Voice-Assistant"
     }
   ];
 

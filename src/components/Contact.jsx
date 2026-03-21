@@ -10,12 +10,12 @@ const Contact = () => {
     event.preventDefault();
     setStatus("sending");
     setResult("Sending...");
-    
+
     const formData = new FormData(event.target);
 
     // IMPORTANT: Get your free Access Key from https://web3forms.com/ 
     // and PASTE IT HERE to receive messages at sangamsri555@gmail.com
-    formData.append("access_key", "ADD_YOUR_ACCESS_KEY_FROM_WEB3FORMS_HERE");
+    formData.append("access_key", "7410460d-dd8c-447c-aa92-359b60713baa");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -54,7 +54,7 @@ const Contact = () => {
       </div>
 
       <div className="contact-container">
-        <motion.div 
+        <motion.div
           className="contact-info glass-panel"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -74,7 +74,7 @@ const Contact = () => {
                 <a href="mailto:sangamsri555@gmail.com">sangamsri555@gmail.com</a>
               </div>
             </div>
-            
+
             <div className="info-item">
               <div className="info-icon"><FaPhoneAlt /></div>
               <div>
@@ -82,7 +82,7 @@ const Contact = () => {
                 <a href="tel:+919198880100">+91 9198880100</a>
               </div>
             </div>
-            
+
             <div className="info-item">
               <div className="info-icon"><FaMapMarkerAlt /></div>
               <div>
@@ -93,7 +93,7 @@ const Contact = () => {
           </div>
         </motion.div>
 
-        <motion.form 
+        <motion.form
           className="contact-form glass-panel"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -104,17 +104,17 @@ const Contact = () => {
           <div className="form-group">
             <input type="text" id="name" name="name" required placeholder="Your Name" />
           </div>
-          
+
           <div className="form-group">
             <input type="email" id="email" name="email" required placeholder="Your Email" />
           </div>
-          
+
           <div className="form-group">
             <textarea id="message" name="message" rows="5" required placeholder="Your Message"></textarea>
           </div>
-          
-          <button 
-            type="submit" 
+
+          <button
+            type="submit"
             className={`btn btn-primary submit-btn ${status === 'sending' ? 'loading' : ''}`}
             disabled={status === 'sending'}
           >
@@ -125,7 +125,7 @@ const Contact = () => {
           </button>
 
           {result && (
-            <motion.p 
+            <motion.p
               className={`form-result ${status}`}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}

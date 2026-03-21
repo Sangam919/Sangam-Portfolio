@@ -49,14 +49,23 @@ const ResumeModal = ({ isOpen, onClose }) => {
     ],
     projects: [
       {
+        title: "Azure Transaction Analytics Platform",
+        desc: "Designed a production-grade Delta Lake architecture (Bronze to Gold) for processing financial transactions using ADF, Databricks, and ADLS Gen2.",
+        tech: ["Azure", "PySpark", "Data Factory", "Databricks", "Delta Lake"],
+        link: "https://github.com/Sangam919/Azure-Transaction-Analytics-Platform",
+        demo: "https://tinyurl.com/ycyv7xd8"
+      },
+      {
         title: "Glioma Brain Tumor Classification",
         desc: "Developed a predictive model to classify LGG and GBM tumors using genetic & clinical mutation features. Achieved high accuracy through feature engineering and ensemble learning.",
-        tech: ["Python", "Scikit-learn", "Pandas", "Matplotlib", "Seaborn"]
+        tech: ["Python", "Scikit-learn", "Pandas", "Matplotlib", "Seaborn"],
+        link: "https://github.com/Sangam919/Gliomo-Grading-Brain-Tumor-LGG-GBM-Analysis"
       },
       {
         title: "Intelligent AI Voice Assistant",
         desc: "Built a fully autonomous voice assistant integrating OpenAI's GPT-4, DALL-E 3, and neural TTS pipelines for natural human-AI interaction.",
-        tech: ["Python", "OpenAI APIs", "Neural TTS", "SpeechRecognition"]
+        tech: ["Python", "OpenAI APIs", "Neural TTS", "SpeechRecognition"],
+        link: "https://github.com/Sangam919/AI-Voice-Assistant"
       }
     ],
     skills: {
@@ -170,7 +179,19 @@ const ResumeModal = ({ isOpen, onClose }) => {
                     <div className="project-items-v3">
                       {resumeData.projects.map((proj, i) => (
                         <div key={i} className="project-card-v3">
-                          <h3>{proj.title}</h3>
+                          <div className="proj-header-v3">
+                            <h3>{proj.title}</h3>
+                            {proj.link && (
+                              <a href={proj.link} target="_blank" rel="noopener noreferrer" className="proj-link-v3" title="View Source">
+                                <FaGithub /> Source
+                              </a>
+                            )}
+                            {proj.demo && (
+                                <a href={proj.demo} target="_blank" rel="noopener noreferrer" className="proj-link-v3 demo" title="Live Demo">
+                                    <FaExternalLinkAlt /> Demo
+                                </a>
+                            )}
+                          </div>
                           <p>{proj.desc}</p>
                           <div className="project-tags-v3">
                             {proj.tech.map((t, j) => <span key={j} className="proj-tag">{t}</span>)}
