@@ -1,4 +1,4 @@
-/* Achievements Section Improved Styles */
+/* Compact Grid Achievements/Certifications Matrix Styles */
 
 .achievements-section {
   padding: 6rem 2rem;
@@ -13,190 +13,162 @@
   -webkit-text-fill-color: transparent;
 }
 
-.achievements-layout {
+/* Core Achievements: Smaller Row */
+.achievements-grid-v3 {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 4rem;
-  margin-top: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
 }
 
-.sub-section-title {
+.achievement-card-v3 {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 16px;
+  background: rgba(17, 24, 39, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  transition: all 0.3s ease;
+}
+
+.achievement-card-v3:hover {
+  background: rgba(6, 182, 212, 0.05);
+  border-color: rgba(6, 182, 212, 0.2);
+}
+
+.ach-icon-v3 {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+.ach-content-v3 h4 {
+  font-size: 1.25rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.ach-content-v3 p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.ach-date-v3 {
+  font-size: 0.8rem;
+  color: #8b5cf6;
+  font-family: 'Fira Code', monospace;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+/* Certifications Matrix */
+.certificates-section-v3 {
+  margin-top: 2rem;
+}
+
+.certificates-title-v3 {
   font-size: 1.5rem;
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: #f1f5f9;
-}
-
-.sub-section-title svg {
-  color: #06b6d4;
-  font-size: 1.2rem;
-}
-
-/* Achievement Cards */
-.achievements-grid-v2 {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.achievement-card-v2 {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  padding: 2.5rem;
-  position: relative;
-  overflow: hidden;
-  border-radius: 20px;
-  background: rgba(17, 24, 39, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.achievement-card-v2:hover {
-  background: rgba(6, 182, 212, 0.05);
-  border-color: rgba(6, 182, 212, 0.2);
-}
-
-.ach-icon-box {
-  width: 70px;
-  height: 70px;
-  border-radius: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  flex-shrink: 0;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.ach-content-v2 {
-  flex: 1;
-}
-
-.ach-date {
-  font-size: 0.85rem;
-  color: #8b5cf6;
-  font-family: 'Fira Code', monospace;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.ach-content-v2 h4 {
-  font-size: 1.4rem;
   color: #fff;
-  margin-bottom: 0.8rem;
+  opacity: 0.9;
 }
 
-.ach-content-v2 p {
-  color: #94a3b8;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* Certification Cards */
-.certificates-grid-v2 {
-  display: flex;
-  flex-direction: column;
+.certificates-matrix-v3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
-.cert-card-v2 {
+.cert-matrix-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
   background: #111827;
   border: 1px solid rgba(255, 255, 255, 0.03);
   border-left: 4px solid #06b6d4;
   border-radius: 12px;
-  padding: 1.5rem 2rem;
-  position: relative;
-  transition: all 0.3s ease;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.cert-card-v2:hover {
-  transform: translateX(10px);
+.cert-matrix-card:hover {
+  transform: translateY(-8px);
   background: #1e293b;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-.cert-status-tag {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  font-size: 0.7rem;
+.cert-matrix-content {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.cert-matrix-icon {
+  font-size: 1.6rem;
+}
+
+.cert-matrix-info h4 {
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.cert-matrix-info p {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.cert-matrix-hover {
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: #64748b;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 700;
-  padding: 0.2rem 0.6rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 4px;
+  transition: color 0.3s ease;
 }
 
-.cert-main {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
+.cert-matrix-card:hover .cert-matrix-hover {
+  color: #06b6d4;
 }
 
-.cert-icon-v2 {
-  font-size: 1.8rem;
-  opacity: 0.9;
-}
-
-.cert-info-v2 h4 {
-  font-size: 1.15rem;
-  color: #fff;
-  margin-bottom: 0.4rem;
-}
-
-.cert-info-v2 p {
-  color: #94a3b8;
-  font-size: 0.9rem;
-}
-
-.cert-footer-v2 {
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  display: flex;
-  justify-content: flex-end;
-}
-
-.cert-verify {
-  font-size: 0.8rem;
-  color: #64748b;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-/* Responsive */
-@media screen and (max-width: 1100px) {
-  .achievements-layout {
+/* Responsive Grid Adjustments */
+@media screen and (max-width: 768px) {
+  .achievements-grid-v3 {
     grid-template-columns: 1fr;
-    gap: 4rem;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .achievement-card-v2 {
-    flex-direction: column;
-    text-align: center;
-    padding: 2rem;
+    gap: 1.5rem;
   }
   
-  .ach-icon-box {
-    margin: 0 auto;
+  .certificates-matrix-v3 {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
   }
   
-  .cert-card-v2 {
-    padding: 1.2rem;
-  }
-  
-  .cert-main {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
+  .cert-matrix-info h4 {
+    max-width: 100%;
   }
 }

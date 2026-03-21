@@ -13,9 +13,9 @@ const Contact = () => {
     
     const formData = new FormData(event.target);
 
-    // To receive emails to sangamsri555@gmail.com, 
-    // This key is linked to your email via Web3Forms (verified for sangamsri555@gmail.com)
-    formData.append("access_key", "73b624f1-6284-4841-8f55-70335805470b");
+    // IMPORTANT: Get your free Access Key from https://web3forms.com/ 
+    // and PASTE IT HERE to receive messages at sangamsri555@gmail.com
+    formData.append("access_key", "ADD_YOUR_ACCESS_KEY_FROM_WEB3FORMS_HERE");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
