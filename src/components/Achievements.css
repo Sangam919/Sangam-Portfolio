@@ -1,0 +1,202 @@
+/* Achievements Section Improved Styles */
+
+.achievements-section {
+  padding: 6rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.highlight-text-v3 {
+  background: linear-gradient(90deg, #06b6d4, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.achievements-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 4rem;
+  margin-top: 3rem;
+}
+
+.sub-section-title {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #f1f5f9;
+}
+
+.sub-section-title svg {
+  color: #06b6d4;
+  font-size: 1.2rem;
+}
+
+/* Achievement Cards */
+.achievements-grid-v2 {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.achievement-card-v2 {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(17, 24, 39, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.achievement-card-v2:hover {
+  background: rgba(6, 182, 212, 0.05);
+  border-color: rgba(6, 182, 212, 0.2);
+}
+
+.ach-icon-box {
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.ach-content-v2 {
+  flex: 1;
+}
+
+.ach-date {
+  font-size: 0.85rem;
+  color: #8b5cf6;
+  font-family: 'Fira Code', monospace;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.ach-content-v2 h4 {
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 0.8rem;
+}
+
+.ach-content-v2 p {
+  color: #94a3b8;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Certification Cards */
+.certificates-grid-v2 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cert-card-v2 {
+  background: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-left: 4px solid #06b6d4;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cert-card-v2:hover {
+  transform: translateX(10px);
+  background: #1e293b;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.cert-status-tag {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.cert-main {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.cert-icon-v2 {
+  font-size: 1.8rem;
+  opacity: 0.9;
+}
+
+.cert-info-v2 h4 {
+  font-size: 1.15rem;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+
+.cert-info-v2 p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.cert-footer-v2 {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cert-verify {
+  font-size: 0.8rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Responsive */
+@media screen and (max-width: 1100px) {
+  .achievements-layout {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .achievement-card-v2 {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .ach-icon-box {
+    margin: 0 auto;
+  }
+  
+  .cert-card-v2 {
+    padding: 1.2rem;
+  }
+  
+  .cert-main {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
