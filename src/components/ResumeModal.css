@@ -83,7 +83,11 @@
   border-color: #f43f5e;
 }
 
-/* Layout */
+/* Layout Constants */
+:root {
+  --resume-padding: 3.5rem;
+}
+
 .resume-layout {
   padding: 0;
   display: flex;
@@ -91,7 +95,8 @@
 }
 
 .resume-header-v3 {
-  padding: 4rem 4rem 3rem;
+  padding: var(--resume-padding);
+  padding-bottom: 2.5rem;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, rgba(6, 182, 212, 0.05) 0%, transparent 100%);
@@ -110,24 +115,29 @@
 .header-main-info {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 2.5rem;
+  align-items: flex-start; /* Changed from end to start for better alignment */
+  margin-bottom: 2rem;
   flex-wrap: wrap;
   gap: 2rem;
 }
 
+.name-and-title {
+  flex: 1;
+  min-width: 300px;
+}
+
 .name-and-title h1 {
-  font-size: 4rem;
+  font-size: 3.5rem; /* Slightly smaller for better fit */
   font-weight: 800;
   letter-spacing: -1px;
   color: #fff;
-  line-height: 1;
-  margin-bottom: 0.8rem;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
 }
 
 .prof-title {
-  font-size: 1.6rem;
-  font-weight: 500;
+  font-size: 1.25rem;
+  font-weight: 600;
   color: var(--accent-cyan);
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -135,54 +145,62 @@
 }
 
 .quick-contact {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
   color: var(--text-muted);
+  width: 100%; /* Ensure full width when wrapped */
+  max-width: 600px;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  white-space: nowrap;
 }
 
 .contact-item svg {
   color: var(--accent-cyan);
+  flex-shrink: 0;
 }
 
 .resume-summary-box {
-  max-width: 850px;
-  font-size: 1.15rem;
+  max-width: 900px;
+  font-size: 1.1rem;
   color: var(--text-muted);
-  line-height: 1.8;
-  padding-left: 2rem;
+  line-height: 1.7;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.02);
   border-left: 3px solid var(--accent-purple);
+  margin-top: 1rem;
+  border-radius: 0 12px 12px 0;
 }
 
 /* Main Content Section Grid */
 .resume-content-columns {
   display: grid;
   grid-template-columns: 1.8fr 1fr;
-  padding: 3rem 4rem;
+  padding: var(--resume-padding);
+  padding-top: 3rem;
   gap: 4rem;
 }
 
 .resume-block-v3 {
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
 }
 
 .section-title-v3 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #fff;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   display: flex;
   align-items: center;
   gap: 1rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .section-title-v3 svg {
@@ -345,11 +363,15 @@
 }
 
 .sidebar-edu-item {
-  margin-bottom: 2.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 1.5rem;
 }
 
 .sidebar-edu-item h4 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   color: #fff;
   margin-bottom: 0.5rem;
 }

@@ -10,7 +10,7 @@ const ResumeModal = ({ isOpen, onClose }) => {
     summary: "Dedicated Data Engineer and AI Developer with hands-on experience in building scalable ETL pipelines (PySpark/Databricks) and intelligent AI-driven applications. Passionate about solving complex problems through data-driven architectures and production-grade ML systems.",
     contact: {
       email: "sangamsri555@gmail.com",
-      phone: "+91 9198642337",
+      phone: "+91 9198880100",
       linkedin: "linkedin.com/in/sangamsri",
       github: "github.com/Sangam919",
       location: "Jalandhar, Punjab, India",

@@ -47,16 +47,16 @@ const Navbar = ({ onOpenResume }) => {
       <div className="nav-container">
         <div className="nav-logo" onClick={() => handleScrollToSection('Home')}>
           <div className="logo-box">
-             <svg viewBox="0 0 100 100" className="logo-svg">
-                <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logo-grad)" strokeWidth="6" />
-                <path d="M35 70 C 35 70, 30 55, 50 50 C 70 45, 65 30, 65 30" fill="none" stroke="url(#logo-grad)" strokeWidth="8" strokeLinecap="round" />
-                <defs>
-                   <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{stopColor: '#06b6d4'}} />
-                      <stop offset="100%" style={{stopColor: '#8b5cf6'}} />
-                   </linearGradient>
-                </defs>
-             </svg>
+            <svg viewBox="0 0 100 100" className="logo-svg">
+              <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logo-grad)" strokeWidth="6" />
+              <path d="M35 70 C 35 70, 30 55, 50 50 C 70 45, 65 30, 65 30" fill="none" stroke="url(#logo-grad)" strokeWidth="8" strokeLinecap="round" />
+              <defs>
+                <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style={{ stopColor: '#06b6d4' }} />
+                  <stop offset="100%" style={{ stopColor: '#8b5cf6' }} />
+                </linearGradient>
+              </defs>
+            </svg>
           </div>
           <span className="logo-name">SANGAM</span>
         </div>
