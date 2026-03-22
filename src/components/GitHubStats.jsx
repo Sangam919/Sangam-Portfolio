@@ -1,21 +1,25 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 
 const GitHubStats = () => {
   const username = "Sangam919";
   
+  // Cache-busting timestamp to force the browser to load live, updated stats
+  const [timestamp] = useState(new Date().getTime());
+
   // Classic GitHub Green/Grey themes
   const statsCards = [
     {
-      url: `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=2ea44f&icon_color=2ea44f&text_color=94a3b8`,
+      url: `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=2ea44f&icon_color=2ea44f&text_color=94a3b8&cache_seconds=1800&v=${timestamp}`,
       alt: "GitHub General Stats"
     },
     {
-      url: `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=2ea44f&text_color=94a3b8`,
+      url: `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=2ea44f&text_color=94a3b8&cache_seconds=1800&v=${timestamp}`,
       alt: "Top Languages"
     },
     {
-      url: `https://github-readme-streak-stats.herokuapp.com/?user=${username}&theme=github_dark&hide_border=true&background=0d1117&stroke=2ea44f&ring=2ea44f&fire=2ea44f&currStreakLabel=2ea44f`,
+      url: `https://github-readme-streak-stats.herokuapp.com/?user=${username}&theme=github_dark&hide_border=true&background=0d1117&stroke=2ea44f&ring=2ea44f&fire=2ea44f&currStreakLabel=2ea44f&v=${timestamp}`,
       alt: "GitHub Streak Stats"
     }
   ];
@@ -23,6 +27,14 @@ const GitHubStats = () => {
   return (
     <section id="github" className="github-section">
       <div className="section-header">
+        <motion.div 
+          className="gh-live-badge"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <span className="pulse"></span> Live GitHub Sync
+        </motion.div>
         <h2>GitHub <span className="highlight-green">Activity</span></h2>
         <div className="underline green-underline"></div>
         <p className="section-subtitle">Real-time repository insights and coding activity</p>
@@ -58,12 +70,13 @@ const GitHubStats = () => {
           </div>
           <div className="gh-graph-img-container">
             <img 
-              src={`https://ghchart.rshah.org/2ea44f/${username}`} 
+              src={`https://ghchart.rshah.org/2ea44f/${username}?v=${timestamp}`} 
               alt="GitHub Contributions" 
               className="gh-chart-img-v2"
             />
           </div>
         </motion.div>
+
       </div>
     </section>
   );
