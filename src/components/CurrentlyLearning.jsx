@@ -6,28 +6,24 @@ const CurrentlyLearning = () => {
     {
       title: "Distributed Systems & System Design",
       desc: "Deep-diving into high-level design patterns, CAP theorem, and building fault-tolerant systems for product-company interviews.",
-      progress: 70,
       icon: <FaServer style={{ color: '#ffbd2e' }} />,
       color: "#8b5cf6"
     },
     {
       title: "RAG Pipelines & AI Data Platforms",
       desc: "Building enterprise automation using Retrieval-Augmented Generation, DBT transformations, and Databricks AI pipelines.",
-      progress: 65,
       icon: <FaRobot style={{ color: '#ff5f56' }} />,
       color: "#8b5cf6"
     },
     {
       title: "Advanced Azure Cloud Architecture",
       desc: "Mastering Azure Synapse, Data Factory, Event Hubs, and cloud-native data engineering at enterprise scale.",
-      progress: 60,
       icon: <FaCloud style={{ color: '#00c8ff' }} />,
       color: "#06b6d4"
     },
     {
       title: "Advanced Spark & Streaming",
       desc: "Building real-time streaming pipelines with Spark Structured Streaming and learning Delta Lake for ACID transactions.",
-      progress: 55,
       icon: <FaStream style={{ color: '#27c93f' }} />,
       color: "#27c93f"
     }
@@ -64,23 +60,6 @@ const CurrentlyLearning = () => {
             <div className="learning-content">
               <h3>{skill.title}</h3>
               <p>{skill.desc}</p>
-            </div>
-
-            <div className="learning-progress-container">
-              <div className="progress-info">
-                <span>Progress</span>
-                <span>{skill.progress}%</span>
-              </div>
-              <div className="progress-bar-bg">
-                <motion.div 
-                  className="progress-bar-fill"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.progress}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  style={{ background: skill.color }}
-                />
-              </div>
             </div>
           </motion.div>
         ))}

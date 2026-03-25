@@ -2,18 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BsChatDotsFill, BsX, BsSendFill } from 'react-icons/bs';
 
-const faqDB = [
-  { keywords: ['hi', 'hello', 'hey'], answer: "Hi there! I'm Sangam's AI assistant. Ask me anything about his skills, experience, projects, or how to contact him." },
-  { keywords: ['who', 'about', 'sangam'], answer: "Sangam Srivastav is a passionate Full Stack Developer and Data Engineer from India. He loves building scalable applications and data pipelines." },
-  { keywords: ['skill', 'tools', 'tech', 'language'], answer: "His main stack includes Python, React, JavaScript, SQL, C++, and Java. For Data Engineering, he works with PySpark, Apache Spark, Databricks, and Azure Data Lake Gen2." },
-  { keywords: ['experience', 'internship', 'work'], answer: "He interned as a Data Engineer at Celebal Technologies (June 2025 - August 2025) and as a Full Stack Intern at SSH Softtech Solution (May 2024 - July 2024)." },
-  { keywords: ['project', 'portfolio'], answer: "His top projects include an AI Voice Assistant using OpenAI APIs and a machine learning model for Glioma tumor grading." },
-  { keywords: ['education', 'college', 'degree', 'lpu'], answer: "He is pursuing a B.Tech in CSE at Lovely Professional University (2023 - 2027), currently holding a 7.54 CGPA." },
-  { keywords: ['contact', 'email', 'phone', 'reach', 'hire'], answer: "You can reach him at sangamsri555@gmail.com or call +91 9198880100. Feel free to use the contact form at the bottom of the page!" },
-  { keywords: ['leetcode', 'github', 'problem', 'solve'], answer: "He has solved over 150 problems on Leetcode. You can check out his live stats in the statistics section of the site." },
-  { keywords: ['achievement', 'hackathon'], answer: "He secured a Top 50 position in the Gear-Up Hackathon and was the 3rd Runner-up in the Concoction 2024 Hackathon." },
-  { keywords: ['resume', 'cv'], answer: "You can download his resume directly from the top navigation bar or mobile menu." }
-];
+import faqDB from './chatbot_faq.json';
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
