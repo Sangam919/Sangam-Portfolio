@@ -11,15 +11,15 @@ const GitHubStats = () => {
   // Classic GitHub Green/Grey themes
   const statsCards = [
     {
-      url: `https://github-readme-stats.vercel.app/api?username=${username}&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=2ea44f&icon_color=2ea44f&text_color=94a3b8&cache_seconds=1800&v=${timestamp}`,
+      url: `https://github-readme-stats-eight-theta.vercel.app/api?username=${username}&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=2ea44f&icon_color=2ea44f&text_color=94a3b8&cache_seconds=1800`,
       alt: "GitHub General Stats"
     },
     {
-      url: `https://github-readme-stats.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=2ea44f&text_color=94a3b8&cache_seconds=1800&v=${timestamp}`,
+      url: `https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=${username}&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=2ea44f&text_color=94a3b8&cache_seconds=1800`,
       alt: "Top Languages"
     },
     {
-      url: `https://github-readme-streak-stats.herokuapp.com/?user=${username}&theme=github_dark&hide_border=true&background=0d1117&stroke=2ea44f&ring=2ea44f&fire=2ea44f&currStreakLabel=2ea44f&v=${timestamp}`,
+      url: `https://github-readme-streak-stats.herokuapp.com/?user=${username}&theme=github_dark&hide_border=true&background=0d1117&stroke=2ea44f&ring=2ea44f&fire=2ea44f&currStreakLabel=2ea44f`,
       alt: "GitHub Streak Stats"
     }
   ];
