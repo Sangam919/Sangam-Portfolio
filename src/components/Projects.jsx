@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaCode, FaRocket, FaBrain, FaCloud, FaStar, FaCodeBranch } from 'react-icons/fa';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { FaGithub, FaExternalLinkAlt, FaCode, FaRocket, FaBrain, FaCloud } from 'react-icons/fa';
 
 const Projects = () => {
   const [projectData, setProjectData] = useState({});
@@ -9,29 +9,32 @@ const Projects = () => {
     {
       id: "glioma",
       repo: "Sangam919/Gliomo-Grading-Brain-Tumor-LGG-GBM-Analysis",
+      githubUrl: "https://github.com/Sangam919/Gliomo-Grading-Brain-Tumor-LGG-GBM-Analysis.git",
       title: "🧠 Glioma Grading Analysis",
-      date: "Feb 2025 - Mar 2025",
-      description: "Advanced clinical and genetic mutation analysis to study glioma grade patterns. Built high-accuracy ML models to classify brain tumors. 🧬",
+      description: "Advanced clinical and genetic mutation analysis to study glioma grade patterns. Built high-accuracy ML models to classify brain tumors with extensive data preprocessing and feature engineering. 🧬",
       icon: <FaBrain />,
-      color: "#06b6d4"
+      color: "#06b6d4",
+      tags: ["Python", "Machine Learning", "Data Analysis"]
     },
     {
       id: "azure",
       repo: "Sangam919/Azure-Transaction-Analytics-Platform",
+      githubUrl: "https://github.com/Sangam919/Azure-Transaction-Analytics-Platform.git",
       title: "☁️ Azure Transaction Platform",
-      date: "Oct 2024 - Dec 2024",
-      description: "Scalable multi-layered data architecture for financial analytics. Implemented Lakehouse patterns using ADF and Databricks. 💎",
+      description: "Scalable multi-layered data architecture for financial analytics. Implemented intelligent Lakehouse patterns using Azure Data Factory and Databricks. 💎",
       icon: <FaCloud />,
-      color: "#8b5cf6"
+      color: "#8b5cf6",
+      tags: ["Azure", "Databricks", "ADF"]
     },
     {
       id: "voice",
       repo: "Sangam919/AI-Voice-Assistant",
+      githubUrl: "https://github.com/Sangam919/AI-Voice-Assistant.git",
       title: "🎙️ AI Voice Assistant",
-      date: "Aug 2024 - Oct 2024",
-      description: "Intelligent assistant with real-time AI-powered voice and text interactions. Features neural text-to-speech pipelines. 🚀",
+      description: "Intelligent conversational assistant with real-time AI-powered voice and text interactions. Features neural text-to-speech pipelines and seamless language understanding. 🚀",
       icon: <FaRocket />,
-      color: "#ec4899"
+      color: "#ec4899",
+      tags: ["Python", "AI / LLM", "NLP"]
     }
   ];
 
@@ -44,11 +47,11 @@ const Projects = () => {
           if (response.ok) {
             const data = await response.json();
             updatedData[project.id] = {
-              stars: data.stargazers_count,
-              forks: data.forks_count,
               language: data.language,
-              githubUrl: data.html_url,
-              demoUrl: data.homepage || data.html_url
+              // We'll prioritize our hardcoded githubUrl, but use API's as fallback
+              githubUrl: project.githubUrl,
+              // Only set demoUrl if it's explicitly set in github and NOT just the repo URL
+              demoUrl: data.homepage && data.homepage !== "" && !data.homepage.includes('github.com') ? data.homepage : null
             };
           }
         } catch (error) {
@@ -74,61 +77,63 @@ const Projects = () => {
         </motion.span>
         <h2>Featured <span className="highlight">Projects</span> 🚀</h2>
         <div className="underline"></div>
-        <p className="section-subtitle">Real-time repository data fetched directly from GitHub API</p>
+        <p className="section-subtitle">A showcase of my premium technical builds and solutions</p>
       </div>
 
-      <div className="projects-grid">
+      <div className="projects-grid-v3">
         {featuredProjects.map((project, idx) => {
           const apiData = projectData[project.id];
+          const primaryGitLink = project.githubUrl;
+          const language = apiData?.language || project.tags[0];
           
           return (
             <motion.div 
               key={idx}
-              className="project-card-v2 glass-panel"
-              initial={{ opacity: 0, y: 30 }}
+              className="project-card-v3"
+              style={{ '--project-color': project.color }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              whileHover={{ y: -10 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
             >
-              <div className="project-card-glow" style={{ background: `radial-gradient(circle at top right, ${project.color}15, transparent)` }}></div>
-              
-              <div className="project-content-v2">
-                <div className="project-icon-top" style={{ color: project.color }}>
+              {/* Visual Side */}
+              <div className="project-visual">
+                <div className="project-visual-glow"></div>
+                <div className="project-icon-large">
                   {project.icon}
                 </div>
-                
-                <div className="project-header-v2">
+              </div>
+              
+              {/* Content Side */}
+              <div className="project-info-v3">
+                <div className="project-header-v3">
                   <h3>{project.title}</h3>
-                  <div className="project-meta-v2">
-                    <span className="project-date-v2">{project.date}</span>
-                    {apiData && (
-                      <div className="project-stats-v2">
-                        <span><FaStar /> {apiData.stars}</span>
-                        <span><FaCodeBranch /> {apiData.forks}</span>
-                      </div>
-                    )}
-                  </div>
                 </div>
                 
-                <p className="project-desc-v2">{project.description}</p>
+                <p className="project-desc-v3">{project.description}</p>
                 
-                <div className="project-tech-v2">
-                  <span className="tech-tag">
-                    <FaCode /> {apiData?.language || "Loading..."}
-                  </span>
-                  <span className="tech-tag">
-                    <FaCode /> GitHub Repo
-                  </span>
+                <div className="project-tech-v3">
+                  {project.tags.map((tag, i) => (
+                    <span key={i} className="tech-pill-v3">
+                      <FaCode style={{ color: project.color }} /> {tag}
+                    </span>
+                  ))}
+                  {apiData?.language && !project.tags.includes(apiData.language) && (
+                    <span className="tech-pill-v3">
+                      <FaCode style={{ color: project.color }} /> {apiData.language}
+                    </span>
+                  )}
                 </div>
                 
-                <div className="project-links-v2">
-                  <a href={apiData?.githubUrl || "#"} target="_blank" rel="noopener noreferrer" className="project-link-btn">
-                    <FaGithub /> Repo
+                <div className="project-links-v3">
+                  <a href={primaryGitLink} target="_blank" rel="noopener noreferrer" className="project-link-v3 link-primary">
+                    <FaGithub /> View Code
                   </a>
-                  <a href={apiData?.demoUrl || "#"} target="_blank" rel="noopener noreferrer" className="project-link-btn highlight">
-                    <FaExternalLinkAlt /> Demo
-                  </a>
+                  {apiData?.demoUrl && (
+                    <a href={apiData.demoUrl} target="_blank" rel="noopener noreferrer" className="project-link-v3 link-secondary">
+                      <FaExternalLinkAlt /> Live Demo
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>

@@ -35,7 +35,11 @@ const Chatbot = () => {
       const lowerInput = userMessage.toLowerCase();
 
       for (let faq of faqDB) {
-        if (faq.keywords.some(kw => lowerInput.includes(kw))) {
+        if (faq.keywords.some(kw => {
+          const escapedKw = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          const regex = new RegExp(`(?:^|\\W)${escapedKw}(?:$|\\W)`, 'i');
+          return regex.test(lowerInput);
+        })) {
           botResponse = faq.answer;
           break;
         }
