@@ -10,28 +10,60 @@ const LeetCodeStats = () => {
     // using alfa-leetcode-api or a free alternative
     const fetchStats = async () => {
       try {
-        const response = await fetch('https://alfa-leetcode-api.onrender.com/Sangam919/solved');
-        if (response.ok) {
-          const data = await response.json();
-          // Ensure data has the expected structure
-          if (data && typeof data.solvedProblem === 'number') {
-            setStats(data);
-          } else {
-            throw new Error('Invalid data format');
+        let statsData = null;
+        
+        // Try Primary API
+        try {
+          const response = await fetch('https://alfa-leetcode-api.onrender.com/Sangam919/solved');
+          if (response.ok) {
+            const data = await response.json();
+            if (data && typeof data.solvedProblem === 'number') {
+              statsData = data;
+            }
           }
-        } else {
-          throw new Error('API request failed');
+        } catch (e) {
+          console.warn("Primary API failed...");
         }
+
+        // Try Fallback API if primary failed
+        if (!statsData) {
+          try {
+            const backupRes = await fetch('https://leetcode-stats-api.herokuapp.com/Sangam919');
+            if (backupRes.ok) {
+              const bgData = await backupRes.json();
+              if (bgData.status === "success") {
+                statsData = {
+                  solvedProblem: bgData.totalSolved,
+                  easySolved: bgData.easySolved,
+                  mediumSolved: bgData.mediumSolved,
+                  hardSolved: bgData.hardSolved,
+                  totalEasy: bgData.totalEasy || 933,
+                  totalMedium: bgData.totalMedium || 2030,
+                  totalHard: bgData.totalHard || 916
+                };
+              }
+            }
+          } catch(e) {
+             console.warn("Secondary API failed...");
+          }
+        }
+
+        if (statsData) {
+          setStats(statsData);
+        } else {
+          throw new Error('Both public LeetCode APIs failed');
+        }
+
       } catch (error) {
-        console.warn("LeetCode API fetching failed, using fallback stats:", error);
+        console.warn("LeetCode APIs rate-limited. Using up-to-date offline fallback.");
         setStats({ 
-          solvedProblem: 160, 
-          easySolved: 75, 
-          mediumSolved: 72, 
-          hardSolved: 13, 
-          totalEasy: 800, 
-          totalMedium: 1650, 
-          totalHard: 750 
+          solvedProblem: 251, 
+          easySolved: 94, 
+          mediumSolved: 141, 
+          hardSolved: 16, 
+          totalEasy: 933, 
+          totalMedium: 2030, 
+          totalHard: 916 
         });
       } finally {
         setLoading(false);
