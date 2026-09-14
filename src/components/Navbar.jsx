@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { navLinks, personal } from '../data/portfolio';
 
-const NAV_LINKS = ['Home', 'About', 'Skills', 'Experience', 'Projects', 'Achievements', 'Contact'];
-
-const Navbar = ({ onOpenResume }) => {
+const Navbar = ({ onOpenResume, onLogoClick, soundEngine }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('Home');
@@ -12,80 +11,63 @@ const Navbar = ({ onOpenResume }) => {
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-
-      // Highlight active section based on scroll position
-      const sections = NAV_LINKS.map(link => document.getElementById(link.toLowerCase()));
-      let currentSection = 'Home';
+      const sections = navLinks.map(l => document.getElementById(l.toLowerCase()));
+      let current = 'Home';
       sections.forEach(sec => {
-        if (sec) {
-          const sectionTop = sec.offsetTop;
-          if (window.scrollY >= sectionTop - 150) {
-            currentSection = sec.getAttribute('id');
-          }
+        if (sec && window.scrollY >= sec.offsetTop - 150) {
+          current = sec.id;
         }
       });
-      setActiveSection(currentSection.charAt(0).toUpperCase() + currentSection.slice(1));
+      setActiveSection(current.charAt(0).toUpperCase() + current.slice(1));
     };
-
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleScrollToSection = (id) => {
+  const scrollTo = (id) => {
     setIsOpen(false);
-    const element = document.getElementById(id.toLowerCase());
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 80,
-        behavior: 'smooth'
-      });
+    soundEngine?.play('click');
+    const el = document.getElementById(id.toLowerCase());
+    if (el) {
+      window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
     }
   };
 
   return (
-    <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}>
+    <nav className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`} role="navigation" aria-label="Main navigation">
       <div className="nav-container">
-        <div className="nav-logo" onClick={() => handleScrollToSection('Home')}>
-          <div className="logo-box">
-            <svg viewBox="0 0 100 100" className="logo-svg">
-              <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logo-grad)" strokeWidth="6" />
-              <path d="M35 70 C 35 70, 30 55, 50 50 C 70 45, 65 30, 65 30" fill="none" stroke="url(#logo-grad)" strokeWidth="8" strokeLinecap="round" />
-              <defs>
-                <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style={{ stopColor: '#06b6d4' }} />
-                  <stop offset="100%" style={{ stopColor: '#8b5cf6' }} />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
+        <div className="nav-logo" onClick={() => { scrollTo('Home'); onLogoClick?.(); }} role="button" tabIndex={0} aria-label="Home">
+          <span className="logo-mark">S</span>
           <span className="logo-name">SANGAM</span>
         </div>
 
-        {/* Desktop Nav */}
         <div className="nav-links desktop-only">
-          {NAV_LINKS.map(link => (
-            <motion.a
+          {navLinks.map(link => (
+            <button
               key={link}
-              onClick={() => handleScrollToSection(link)}
+              onClick={() => scrollTo(link)}
               className={`nav-link ${activeSection === link ? 'active' : ''}`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              onMouseEnter={() => soundEngine?.play('hover')}
             >
               {link}
-            </motion.a>
+            </button>
           ))}
-          <a href="/resume.pdf" onClick={onOpenResume} className="nav-resume-btn">
+          <a
+            href={personal.resumePath}
+            download
+            className="nav-resume-btn"
+            onClick={(e) => { onOpenResume?.(e); }}
+            onMouseEnter={() => soundEngine?.play('hover')}
+          >
             Resume
           </a>
         </div>
 
-        {/* Mobile Toggle */}
-        <div className="mobile-only nav-toggle" onClick={() => setIsOpen(!isOpen)}>
+        <button className="mobile-only nav-toggle" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu" aria-expanded={isOpen}>
           {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-        </div>
+        </button>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -94,16 +76,12 @@ const Navbar = ({ onOpenResume }) => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
           >
-            {NAV_LINKS.map(link => (
-              <a
-                key={link}
-                className="mobile-nav-link"
-                onClick={() => handleScrollToSection(link)}
-              >
+            {navLinks.map(link => (
+              <button key={link} className="mobile-nav-link" onClick={() => scrollTo(link)}>
                 {link}
-              </a>
+              </button>
             ))}
-            <a href="/resume.pdf" onClick={onOpenResume} className="mobile-resume-btn">
+            <a href={personal.resumePath} download className="mobile-resume-btn">
               Download Resume
             </a>
           </motion.div>

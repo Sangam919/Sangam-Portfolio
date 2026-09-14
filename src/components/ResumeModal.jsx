@@ -20,30 +20,49 @@ const ResumeModal = ({ isOpen, onClose }) => {
         school: "Lovely Professional University",
         degree: "B.Tech in Computer Science and Engineering",
         date: "2023 - 2027",
-        details: "Focusing on Distributed Systems, Cloud Computing, and AI/ML. Current CGPA: 7.54"
+        details: "Focusing on Distributed Systems, Cloud Computing, and AI/ML. Current CGPA: 7.69"
       }
     ],
     experience: [
       {
-        title: "Data Engineer Intern",
-        company: "Celebal Technologies",
-        date: "June 2025 - August 2025",
+        title: "Chief Operating Officer (Student Organization)",
+        company: "Zenvest LPU (Part-time · On-site)",
+        date: "Jan 2024 - Present",
         points: [
-          "Architected production-grade data pipelines using Apache Spark & Azure Databricks.",
-          "Optimized complex ETL workflows for processing massive datasets in ADLS Gen2.",
-          "Implemented data partitioning and caching strategies, reducing processing time by 30%.",
-          "Collaborated on designing schema-on-read architectures for unstructured data lakes."
+          "Led day-to-day operations, managed cross-functional teams, and planned technical events and student engagement initiatives.",
+          "Collaborated with leadership to streamline organizational processes, oversee project delivery, and build campus partnerships.",
+          "Strengthened leadership, strategic planning, project management, and stakeholder management skills."
         ]
       },
       {
-        title: "Full Stack Intern",
-        company: "SSH Softtech Solution",
-        date: "May 2024 - July 2024",
+        title: "AI Engineer Intern",
+        company: "Infosys Springboard (Internship)",
+        date: "Feb 2026 - Apr 2026",
         points: [
-          "Developed responsive web components and integrated robust REST APIs.",
-          "Handled intensive JSON-based data flow between client and server modules.",
-          "Assisted in backend database optimization and query performance tuning.",
-          "Contributed to building real-time dashboards for data visualization."
+          "Contributed to developing an Azure-Based Demand Forecasting & Capacity Optimization System.",
+          "Leveraged ML techniques for demand forecasting, including data preprocessing, feature engineering, model training, and evaluation.",
+          "Gained hands-on experience with Microsoft Azure, predictive analytics, cloud technologies, and end-to-end AI/ML development."
+        ]
+      },
+      {
+        title: "Data Engineer Intern",
+        company: "Celebal Technologies (Internship)",
+        date: "Jun 2025 - Aug 2025",
+        points: [
+          "Developed data processing and transformation workflows using Python, SQL, and Apache Spark on large-scale datasets.",
+          "Configured Apache Airflow DAGs for workflow orchestration and automated data pipeline execution.",
+          "Integrated Azure Data Services for cloud-based data ingestion and created analytical dashboards in Power BI.",
+          "Strengthened production skills in ETL/ELT pipelines, distributed processing, and cloud data architecture."
+        ]
+      },
+      {
+        title: "Full Stack Intern (ML)",
+        company: "SSH SOFTTECH SOLUTION (Internship)",
+        date: "May 2024 - Jul 2024",
+        points: [
+          "Developed full-stack web applications using React.js, Node.js, Express.js, and REST APIs with MySQL and MongoDB.",
+          "Engineered Python machine learning modules with Pandas, NumPy, and Scikit-learn for automated data analysis.",
+          "Collaborated across Agile development cycles spanning testing, debugging, and continuous deployment."
         ]
       }
     ],
